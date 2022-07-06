@@ -1,0 +1,48 @@
+-- create a auto store database
+
+create table bekind_stores (product_id integer,
+    brand Text,
+    model Text,
+    year Integer,
+    price Integer);
+    
+-- populate the database with the following values 
+
+insert into bekind_stores (product_id, brand, model, year, price) values (1, 'Benz', 'g-wagon', 2021, 150000);
+insert into bekind_stores (product_id, brand, model, year, price) values (2, 'Benz', 'c300', 2022, 50000);
+insert into bekind_stores (product_id, brand, model, year, price) values (3, 'Dodge', 'charger-srt', 2022, 100000);
+insert into bekind_stores (product_id, brand, model, year, price) values (4, 'Benz', 'c300', 2020, 30000);
+insert into bekind_stores (product_id, brand, model, year, price) values (5, 'Benz', 'gle', 2022, 100000);
+insert into bekind_stores (product_id, brand, model, year, price) values (6, 'Toyota', 'Camry', 2022, 53000);
+insert into bekind_stores (product_id, brand, model, year, price) values (7, 'Honda', 'Accord', 2021, 20000);                            
+insert into bekind_stores (product_id, brand, model, year, price) values (8, 'BMW', 'm3', 2022, 50000);
+insert into bekind_stores (product_id, brand, model, year, price) values (9, 'BMW', 'm4', 2022, 55000);
+insert into bekind_stores (product_id, brand, model, year, price) values (10, 'Tesla', 'Plaid', 2022, 100000);    
+                                
+
+-- desplay the database ordered by price 
+select * from bekind_stores 
+order by price desc;
+
+--query for the avg price of items in the benz section 
+select avg(price)
+from bekind_stores
+where brand = 'Benz'
+
+-- query for the 5 most expensive cars 
+select * 
+from bekind_stores 
+order by price desc
+limit 5
+
+
+--query for the sum of product based on brand 
+select brand, sum(price) as sum_price 
+from bekind_stores
+group by brand
+order by sum_price desc
+
+-- total cost of cars
+select sum(price) as total_price
+from bekind_stores
+               
